@@ -21,4 +21,5 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           RSS_FEED_URL: https://tuyencongchuc.vn/feed/
+          NOTICE_KEYWORDS: ${{ vars.NOTICE_KEYWORDS }}
         run: npm run collect
