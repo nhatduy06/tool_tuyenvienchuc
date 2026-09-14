@@ -1,0 +1,27 @@
+{
+  "name": "vienchuc247-notice-collector",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RSS collector for education recruitment notices",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "collect": "tsx src/index.ts",
+    "collect:dry": "tsx src/index.ts --dry-run",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "cheerio": "^1.1.2",
+    "dotenv": "^17.2.2",
+    "rss-parser": "^3.13.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
