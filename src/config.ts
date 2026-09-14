@@ -16,12 +16,13 @@ const envSchema = z.object({
 });
 
 const env = envSchema.parse(process.env);
+const configuredKeywords = env.NOTICE_KEYWORDS?.split(',').map((keyword) => keyword.trim()).filter(Boolean) ?? [];
 
 export const config = {
   feedUrl: env.RSS_FEED_URL,
   supabaseUrl: env.SUPABASE_URL,
   supabaseServiceRoleKey: env.SUPABASE_SERVICE_ROLE_KEY,
-  keywords: (env.NOTICE_KEYWORDS?.split(',').map((keyword) => keyword.trim()).filter(Boolean) ?? DEFAULT_KEYWORDS)
+  keywords: configuredKeywords.length > 0 ? configuredKeywords : DEFAULT_KEYWORDS
 };
 
 export function assertSupabaseConfig(): { url: string; key: string } {
