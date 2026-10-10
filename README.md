@@ -23,6 +23,20 @@ Tool Node.js/TypeScript độc lập để đọc RSS tuyển dụng, lọc thô
 
 Không commit `.env`, service role key hoặc secret nào vào GitHub. Nếu RSS lỗi, job thất bại và không thực hiện ghi, nên dữ liệu cũ không bị xóa.
 
+## Tuân thủ ghi nguồn
+
+Nguồn RSS `https://tuyencongchuc.vn/feed/` yêu cầu ghi rõ nguồn `www.tuyencongchuc.vn` khi phát hành lại thông tin.
+
+Tool lưu đúng `source_name = 'www.tuyencongchuc.vn'` cho mọi bản ghi và chỉ lưu metadata + link, không sao chép toàn bộ nội dung bài viết.
+
+Website chính khi hiển thị dữ liệu từ bảng `recruitment_notices` phải ghi nguồn, ví dụ:
+
+```tsx
+<p>
+  Nguồn: <a href={notice.aggregator_url} target="_blank" rel="noreferrer">www.tuyencongchuc.vn</a>
+</p>
+```
+
 ## Kiểm thử và build
 
 - `npm test`: chạy Vitest.

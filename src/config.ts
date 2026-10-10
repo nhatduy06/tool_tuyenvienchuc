@@ -1,8 +1,14 @@
 import 'dotenv/config';
 import { z } from 'zod';
 
+// Ghi nguồn bắt buộc theo yêu cầu của trang gốc:
+// "Chuyên trang đăng tải thông báo tuyển dụng công chức, viên chức của các cơ quan nhà nước -
+// Ghi rõ nguồn "www.tuyencongchuc.vn" khi phát hành lại thông tin từ website này."
+export const SOURCE_NAME = 'www.tuyencongchuc.vn';
+export const SOURCE_FEED_URL = 'https://tuyencongchuc.vn/feed/';
+
 export const DEFAULT_KEYWORDS = [
-  'tuyển giáo viên', 'viên chức giáo dục', 'giáo viên mầm non',
+  'tuyển giáo viên', 'giáo viên', 'viên chức giáo dục', 'giáo viên mầm non',
   'giáo viên tiểu học', 'giáo viên THCS', 'giáo viên THPT',
   'nhân viên trường học', 'hợp đồng giáo viên', 'tuyển dụng giáo dục',
   'trường học', 'sở giáo dục', 'phòng giáo dục'
@@ -11,7 +17,7 @@ export const DEFAULT_KEYWORDS = [
 const envSchema = z.object({
   SUPABASE_URL: z.string().url().optional(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
-  RSS_FEED_URL: z.string().url().default('https://tuyencongchuc.vn/feed/'),
+  RSS_FEED_URL: z.string().url().default(SOURCE_FEED_URL),
   NOTICE_KEYWORDS: z.string().optional()
 });
 

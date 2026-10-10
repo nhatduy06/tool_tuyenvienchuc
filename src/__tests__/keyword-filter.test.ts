@@ -6,6 +6,7 @@ const item = (title: string, description = '') => ({ title, description, link: '
 describe('keyword filter', () => {
   it('matches Vietnamese education keywords without accent sensitivity', () => {
     expect(matchesNotice(item('Tuyển giáo viên mầm non'), ['tuyển giáo viên'])).toBe(true);
+    expect(matchesNotice(item('Tuyển dụng giáo viên hợp đồng'), ['giáo viên'])).toBe(true);
     expect(matchesNotice(item('Thông báo tuyển dụng nhân sự'), ['tuyển giáo viên', 'trường học'])).toBe(false);
   });
 
