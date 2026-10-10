@@ -13,6 +13,8 @@ Tool Node.js/TypeScript độc lập để đọc RSS tuyển dụng, lọc thô
 
 `RSS_FEED_URL` mặc định là `https://tuyencongchuc.vn/feed/`. Có thể thay `NOTICE_KEYWORDS` bằng danh sách keyword phân cách bởi dấu phẩy. Mỗi request có User-Agent, timeout 15 giây, tối đa 2 lần retry và kiểm tra robots.txt trước khi tải trang chi tiết.
 
+Nếu RSS bị trang gốc chặn truy cập tự động (HTTP 403), tool tự động dùng WordPress REST API (`/wp-json/wp/v2/posts`) của cùng trang làm dự phòng. Cả hai nguồn đều chỉ lấy metadata (tiêu đề, link, mô tả ngắn, ngày đăng), không sao chép toàn bộ nội dung. Nếu cả hai đều lỗi, workflow báo lỗi và dữ liệu cũ trong Supabase được giữ nguyên.
+
 ## GitHub Actions
 
 1. Tạo GitHub repository riêng cho project này, không dùng repository website chính.
